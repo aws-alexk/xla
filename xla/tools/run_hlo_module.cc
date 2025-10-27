@@ -502,6 +502,7 @@ absl::Status RunAndCompare(
                                HloModule& module)>
         compilation_env_modifier_hook) {
   std::string input_format = options.input_format;
+  std::cerr << "Hello world";
   if (input_format.empty()) {
     input_format = std::string(tsl::io::Extension(hlo_filename));
   }
