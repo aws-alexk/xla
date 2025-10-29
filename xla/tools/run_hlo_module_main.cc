@@ -327,19 +327,16 @@ int main(int argc, char** argv) {
           });
 
       if (result.ok()) {
-        if (!reference_platform_name.empty()) {
-          std::cerr << "\n** Results on " << test_platform_name << " and "
-                    << reference_platform_name << " are close enough. **\n";
-        }
+        std::cerr << "\n** Results on " << test_platform_name << " and "
+                  << reference_platform_name << " are close enough. **\n";
       } else {
         failure_count++;
         std::cerr << result << "\n";
       }
     }
 
-    if (!reference_platform_name.empty()) {
-      std::cerr << failure_count << "/" << iteration_count << " runs failed.\n";
-    }
+    std::cerr << failure_count << "/" << iteration_count << " runs failed.\n";
+
     if (!opts.output_literals_file.empty()) {
       if (!tsl::WriteBinaryProto(tsl::Env::Default(), opts.output_literals_file,
                                  literals_proto)
